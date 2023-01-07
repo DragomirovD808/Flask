@@ -41,7 +41,7 @@ pipeline {
           }
             steps {
                 sh '''
-                    helm instal flask helm/ --namespace prod --create-namespace --set deployment.tag=$GIT_COMMIT --set deployment.env=prod
+                    helm install flask helm/ --namespace prod --create-namespace --set deployment.tag=$GIT_COMMIT --set deployment.env=prod
                 '''
            }
          }
