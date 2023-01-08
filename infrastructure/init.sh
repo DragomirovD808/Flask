@@ -29,17 +29,17 @@ curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.17.0/kind-linux-amd64
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
 
-echo "
+         echo "
 apiVersion: kind.x-k8s.io/v1alpha4
 kind: Cluster
 nodes:
 - role: control-plane
   extraPortMappings:
-  - containerPort: 80
-    hostPort: 80
+  - containerPort: 30000
+    hostPort: 30000
     listenAddress: "0.0.0.0" # Optional, defaults to "0.0.0.0"
-    protocol: udp # Optional, defaults to tcp
-- role: worker" >>  cluster.yaml
+    protocol: TCP # Optional, defaults to tcp
+-  role: worker" >> cluster.yaml
 
 
 kind create cluster --config cluster.yaml 
